@@ -1,3 +1,5 @@
+import { Check } from "lucide-react";
+
 const POINTS = [
   {
     strong: "Bidirectional GL posting",
@@ -37,7 +39,9 @@ export function Dynamics() {
             <div className="dynamics-points">
               {POINTS.map((p) => (
                 <div className="dyn-point" key={p.strong}>
-                  <div className="dyn-check">✓</div>
+                  <div className="dyn-check">
+                    <Check size={12} strokeWidth={3} aria-hidden="true" />
+                  </div>
                   <p>
                     <strong>{p.strong}</strong>
                     {p.rest}

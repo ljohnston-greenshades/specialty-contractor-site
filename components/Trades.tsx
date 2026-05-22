@@ -1,12 +1,31 @@
-const TRADES = [
-  { num: "01", icon: "🔧", name: "Plumbing", body: "Multi-site crews, licensing across states, complex labor cost tracking" },
-  { num: "02", icon: "❄️", name: "HVAC", body: "Seasonal workforce management, commercial & residential pay structures" },
-  { num: "03", icon: "⚡", name: "Electrical", body: "Certified payroll for government projects, union and non-union support" },
-  { num: "04", icon: "🌿", name: "Landscaping", body: "High seasonal volume, hourly complexity, rapid onboarding and offboarding" },
-  { num: "05", icon: "🏗️", name: "General Contracting", body: "Multi-subcontractor coordination, job costing, prevailing wage" },
-  { num: "06", icon: "🪵", name: "Carpentry & Millwork", body: "Trade-specific pay rates, benefits for skilled workers, compliance reporting" },
-  { num: "07", icon: "🔩", name: "Mechanical & Sheet Metal", body: "Union pay rules, reciprocity tracking, complex overtime calculations" },
-  { num: "08", icon: "🏢", name: "Commercial Construction", body: "Multi-state tax, large workforce management, ERP integration at scale" },
+import {
+  Wrench,
+  Snowflake,
+  Zap,
+  Trees,
+  HardHat,
+  Hammer,
+  Cog,
+  Building2,
+  type LucideIcon,
+} from "lucide-react";
+
+type Trade = {
+  num: string;
+  Icon: LucideIcon;
+  name: string;
+  body: string;
+};
+
+const TRADES: Trade[] = [
+  { num: "01", Icon: Wrench, name: "Plumbing", body: "Multi-site crews, licensing across states, complex labor cost tracking" },
+  { num: "02", Icon: Snowflake, name: "HVAC", body: "Seasonal workforce management, commercial & residential pay structures" },
+  { num: "03", Icon: Zap, name: "Electrical", body: "Certified payroll for government projects, union and non-union support" },
+  { num: "04", Icon: Trees, name: "Landscaping", body: "High seasonal volume, hourly complexity, rapid onboarding and offboarding" },
+  { num: "05", Icon: HardHat, name: "General Contracting", body: "Multi-subcontractor coordination, job costing, prevailing wage" },
+  { num: "06", Icon: Hammer, name: "Carpentry & Millwork", body: "Trade-specific pay rates, benefits for skilled workers, compliance reporting" },
+  { num: "07", Icon: Cog, name: "Mechanical & Sheet Metal", body: "Union pay rules, reciprocity tracking, complex overtime calculations" },
+  { num: "08", Icon: Building2, name: "Commercial Construction", body: "Multi-state tax, large workforce management, ERP integration at scale" },
 ];
 
 export function Trades() {
@@ -27,12 +46,14 @@ export function Trades() {
           </p>
         </div>
         <div className="trades-grid">
-          {TRADES.map((t) => (
-            <div className="trade-card" key={t.num}>
-              <span className="trade-icon-num">{t.num}</span>
-              <span className="trade-icon-big">{t.icon}</span>
-              <h3>{t.name}</h3>
-              <p>{t.body}</p>
+          {TRADES.map(({ num, Icon, name, body }) => (
+            <div className="trade-card" key={num}>
+              <span className="trade-icon-num">{num}</span>
+              <span className="trade-icon-big">
+                <Icon size={32} strokeWidth={1.5} aria-hidden="true" />
+              </span>
+              <h3>{name}</h3>
+              <p>{body}</p>
             </div>
           ))}
         </div>

@@ -4,6 +4,7 @@ import { Ticker } from "@/components/Ticker";
 import { Pain } from "@/components/Pain";
 import { Capabilities } from "@/components/Capabilities";
 import { Trades } from "@/components/Trades";
+import { CrewsInAction } from "@/components/CrewsInAction";
 import { WhyFlux } from "@/components/WhyFlux";
 import { Testimonial } from "@/components/Testimonial";
 import { Dynamics } from "@/components/Dynamics";
@@ -19,6 +20,7 @@ export default function Home() {
       <Pain />
       <Capabilities />
       <Trades />
+      <CrewsInAction />
       <WhyFlux />
       <Testimonial />
       <Dynamics />

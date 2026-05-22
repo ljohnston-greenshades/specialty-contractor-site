@@ -10,10 +10,11 @@
   --light-steel:#9ca3af;
   --off-white:  #f0ede8;
   --white:      #ffffff;
-  --yellow:     #f5c842;
-  --yellow-dim: #c9a32e;
+  --brand:      #00a651;
+  --brand-dim:  #008443;
+  --brand-soft: rgba(0,166,81,0.12);
   --orange:     #e8621a;
-  --green:      #4a9c5d;
+  --green:      #2bb673;
   --border:     rgba(255,255,255,0.08);
   --border-mid: rgba(255,255,255,0.14);
 }
@@ -72,7 +73,7 @@ body::before {
 .logo-mark {
   width: 28px;
   height: 28px;
-  background: var(--yellow);
+  background: var(--brand);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,7 +114,7 @@ body::before {
 }
 .nav-links a:hover { color: var(--white); }
 .nav-cta {
-  background: var(--yellow) !important;
+  background: var(--brand) !important;
   color: var(--black) !important;
   padding: 8px 18px;
   letter-spacing: 0.05em !important;
@@ -150,7 +151,7 @@ body::before {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--yellow) 0%, var(--orange) 60%, transparent 100%);
+  background: linear-gradient(90deg, var(--brand) 0%, var(--brand-dim) 60%, transparent 100%);
   z-index: 10;
 }
 
@@ -187,7 +188,7 @@ body::before {
 .eyebrow-line {
   width: 32px;
   height: 2px;
-  background: var(--yellow);
+  background: var(--brand);
   display: inline-block;
 }
 .eyebrow-text {
@@ -196,7 +197,7 @@ body::before {
   font-size: 0.82rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: var(--yellow);
+  color: var(--brand);
 }
 
 .hero h1 {
@@ -210,7 +211,7 @@ body::before {
   margin-bottom: 28px;
 }
 .hero h1 .accent {
-  color: var(--yellow);
+  color: var(--brand);
   display: block;
 }
 .hero h1 .accent-outline {
@@ -241,7 +242,7 @@ body::before {
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  background: var(--yellow);
+  background: var(--brand);
   color: var(--black);
   padding: 14px 28px;
   text-decoration: none;
@@ -293,7 +294,7 @@ body::before {
   position: absolute;
   left: 0; top: 0; bottom: 0;
   width: 3px;
-  background: var(--yellow);
+  background: var(--brand);
 }
 .stat-num {
   font-family: var(--font-barlow-condensed), sans-serif;
@@ -304,7 +305,7 @@ body::before {
   letter-spacing: -0.02em;
   margin-bottom: 6px;
 }
-.stat-num span { color: var(--yellow); }
+.stat-num span { color: var(--brand); }
 .stat-desc {
   font-size: 0.88rem;
   font-weight: 500;
@@ -314,7 +315,7 @@ body::before {
 
 /* ── TICKER / MARQUEE ── */
 .ticker {
-  background: var(--yellow);
+  background: var(--brand);
   overflow: hidden;
   padding: 10px 0;
   position: relative;
@@ -359,7 +360,7 @@ body::before {
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: var(--yellow);
+  color: var(--brand);
   margin-bottom: 14px;
   display: flex;
   align-items: center;
@@ -369,7 +370,7 @@ body::before {
   content: '';
   width: 24px;
   height: 2px;
-  background: var(--yellow);
+  background: var(--brand);
   display: inline-block;
   flex-shrink: 0;
 }
@@ -407,7 +408,7 @@ body::before {
 .pain-left .section-sub { margin-bottom: 32px; }
 
 .pain-callout {
-  background: var(--yellow);
+  background: var(--brand);
   padding: 24px 28px;
   color: var(--black);
 }
@@ -447,8 +448,8 @@ body::before {
 .pain-icon-wrap {
   width: 40px;
   height: 40px;
-  background: rgba(245,200,66,0.12);
-  border: 1px solid rgba(245,200,66,0.25);
+  background: rgba(0,166,81,0.12);
+  border: 1px solid rgba(0,166,81,0.25);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -495,7 +496,7 @@ body::before {
   background: transparent;
   transition: background 0.25s;
 }
-.cap-card:hover::after { background: var(--yellow); }
+.cap-card:hover::after { background: var(--brand); }
 
 .cap-letter {
   font-family: var(--font-barlow-condensed), sans-serif;
@@ -546,9 +547,9 @@ body::before {
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--yellow);
-  background: rgba(245,200,66,0.08);
-  border: 1px solid rgba(245,200,66,0.2);
+  color: var(--brand);
+  background: rgba(0,166,81,0.08);
+  border: 1px solid rgba(0,166,81,0.2);
   padding: 3px 10px;
 }
 
@@ -593,12 +594,12 @@ body::before {
   background: transparent;
   transition: background 0.2s;
 }
-.trade-card:hover::before { background: var(--yellow); }
+.trade-card:hover::before { background: var(--brand); }
 .trade-icon-num {
   font-family: var(--font-barlow-condensed), sans-serif;
   font-weight: 900;
   font-size: 0.72rem;
-  color: var(--yellow);
+  color: var(--brand);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -666,7 +667,7 @@ body::before {
   font-weight: 900;
   font-size: 2.2rem;
   line-height: 1;
-  color: var(--yellow);
+  color: var(--brand);
   letter-spacing: -0.02em;
 }
 .diff-item h4 {
@@ -708,7 +709,7 @@ body::before {
 .testimonial-content {
   position: relative;
   z-index: 1;
-  border-left: 4px solid var(--yellow);
+  border-left: 4px solid var(--brand);
   padding-left: 40px;
 }
 .testimonial-content blockquote {
@@ -731,7 +732,7 @@ body::before {
   display: block;
 }
 .testimonial-content cite strong {
-  color: var(--yellow);
+  color: var(--brand);
   display: block;
   margin-bottom: 4px;
 }
@@ -740,12 +741,12 @@ body::before {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(245,200,66,0.1);
-  border: 1px solid rgba(245,200,66,0.25);
+  background: rgba(0,166,81,0.1);
+  border: 1px solid rgba(0,166,81,0.25);
   padding: 8px 16px;
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--yellow);
+  color: var(--brand);
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
@@ -782,7 +783,7 @@ body::before {
 .dyn-check {
   width: 20px;
   height: 20px;
-  background: var(--yellow);
+  background: var(--brand);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -808,8 +809,8 @@ body::before {
   margin-bottom: 2px;
 }
 .erp-box.highlighted {
-  background: rgba(245,200,66,0.07);
-  border-color: rgba(245,200,66,0.35);
+  background: rgba(0,166,81,0.07);
+  border-color: rgba(0,166,81,0.35);
   border-width: 1.5px;
 }
 .erp-box-label {
@@ -829,7 +830,7 @@ body::before {
   letter-spacing: 0.04em;
   color: var(--white);
 }
-.erp-box.highlighted .erp-box-name { color: var(--yellow); }
+.erp-box.highlighted .erp-box-name { color: var(--brand); }
 .erp-box-sub {
   font-size: 0.8rem;
   color: var(--steel);
@@ -851,7 +852,7 @@ body::before {
 .erp-connector-line {
   width: 1px;
   height: 24px;
-  background: rgba(245,200,66,0.4);
+  background: rgba(0,166,81,0.4);
   display: block;
 }
 .erp-connector-label {
@@ -860,7 +861,7 @@ body::before {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--yellow);
+  color: var(--brand);
   padding: 0 8px;
   white-space: nowrap;
 }
@@ -885,7 +886,7 @@ body::before {
 
 /* ── CTA SECTION ── */
 .cta-section {
-  background: var(--yellow);
+  background: var(--brand);
   padding: 88px 48px;
   position: relative;
   overflow: hidden;
@@ -956,14 +957,14 @@ body::before {
   width: 100%;
 }
 .cta-form-panel input::placeholder { color: rgba(255,255,255,0.22); }
-.cta-form-panel input:focus { border-color: var(--yellow); }
+.cta-form-panel input:focus { border-color: var(--brand); }
 .btn-submit {
   font-family: var(--font-barlow-condensed), sans-serif;
   font-weight: 800;
   font-size: 1.05rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  background: var(--yellow);
+  background: var(--brand);
   color: var(--black);
   border: none;
   padding: 15px 28px;
@@ -1021,13 +1022,149 @@ body::before {
 }
 .footer-links a:hover { color: var(--white); }
 
+/* ── ICONS (Lucide) ── */
+.icon-tile {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,166,81,0.10);
+  border: 1px solid rgba(0,166,81,0.28);
+  color: var(--brand);
+  flex-shrink: 0;
+}
+.icon-tile.tile-dark {
+  background: var(--dark-3);
+  border-color: var(--border-mid);
+  color: var(--brand);
+}
+.trade-icon-big {
+  width: 36px;
+  height: 36px;
+  color: var(--brand);
+  display: inline-flex;
+  align-items: center;
+  font-size: 0;
+}
+
+/* override emoji-era icon containers so they accept SVG cleanly */
+.pain-icon-wrap, .cap-icon-box {
+  background: rgba(0,166,81,0.10);
+  border-color: rgba(0,166,81,0.28);
+  color: var(--brand);
+}
+.cap-icon-box {
+  background: var(--dark-3);
+  border-color: var(--border-mid);
+}
+.pain-icon-wrap svg, .cap-icon-box svg { color: var(--brand); }
+
+/* ── IMAGERY PLACEHOLDERS ── */
+/*
+ * <img> elements use these classes. While the real photo at the
+ * `src` path is missing, the browser renders the alt text inside the
+ * styled box — making it obvious what each image should portray.
+ */
+.crew-photo,
+.testimonial-portrait {
+  display: block;
+  background: linear-gradient(135deg, var(--dark-2), var(--dark-3));
+  color: rgba(255,255,255,0.45);
+  font-family: var(--font-barlow), sans-serif;
+  font-size: 0.78rem;
+  font-style: italic;
+  line-height: 1.45;
+  padding: 16px;
+}
+.crew-photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+.testimonial-portrait {
+  width: 200px;
+  height: 240px;
+  object-fit: cover;
+  border: 1px solid var(--border-mid);
+  flex-shrink: 0;
+}
+
+/* ── CREWS IN ACTION ── */
+.crews-section {
+  background: var(--black);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.crews-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: end;
+  margin-bottom: 48px;
+}
+.crews-header-sub {
+  color: rgba(255,255,255,0.5);
+  font-size: 1rem;
+  line-height: 1.7;
+  align-self: end;
+}
+.crews-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.crew-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--dark-2);
+}
+.crew-card-caption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 22px 20px 18px;
+  background: linear-gradient(0deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.5) 65%, transparent 100%);
+  pointer-events: none;
+}
+.crew-card-trade {
+  font-family: var(--font-barlow-condensed), sans-serif;
+  font-weight: 800;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--brand);
+  margin-bottom: 4px;
+}
+.crew-card-line {
+  font-family: var(--font-barlow-condensed), sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--white);
+  letter-spacing: 0.02em;
+}
+
+/* ── TESTIMONIAL LAYOUT (with portrait) ── */
+.testimonial-layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 56px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 960px) {
   .hero-inner, .pain-section .section-inner,
   .why-layout, .dynamics-layout,
-  .cta-inner, .trades-header {
+  .cta-inner, .trades-header, .crews-header, .testimonial-layout {
     grid-template-columns: 1fr;
   }
+  .crews-grid { grid-template-columns: repeat(2, 1fr); }
+  .testimonial-portrait { width: 160px; height: 200px; }
   .hero h1 { font-size: 3.4rem; }
   .trades-grid { grid-template-columns: repeat(2, 1fr); }
   .cap-grid { grid-template-columns: 1fr 1fr; }
