@@ -27,25 +27,16 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="hero-stats">
-          <div className="stat-block">
-            <div className="stat-num">535<span>+</span></div>
-            <div className="stat-desc">
-              Construction &amp; specialty trade customers currently on Flux
-            </div>
-          </div>
-          <div className="stat-block">
-            <div className="stat-num">20<span>+</span></div>
-            <div className="stat-desc">
-              Years of native Microsoft Dynamics integration — GP, BC, and beyond
-            </div>
-          </div>
-          <div className="stat-block">
-            <div className="stat-num">All<span> 50</span></div>
-            <div className="stat-desc">
-              States covered for payroll tax and compliance — including multi-jurisdiction
-            </div>
-          </div>
+        <div className="hero-image-wrap">
+          <div className="hero-image-glow" aria-hidden="true" />
+          <img
+            className="hero-image"
+            src="/images/gs-dark.png"
+            alt="The Flux platform dashboard — a dark-themed payroll and HR cockpit showing period status, employee counts, multi-state tax filings, benefits enrollment progress, and a payroll-complete confirmation for a specialty contractor crew."
+            width={1730}
+            height={909}
+            fetchPriority="high"
+          />
         </div>
       </div>
     </section>

@@ -186,8 +186,8 @@ body::before {
   padding: 88px 48px 80px;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 80px;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
   align-items: center;
   flex: 1;
 }
@@ -324,6 +324,57 @@ body::before {
   font-weight: 500;
   color: var(--steel);
   line-height: 1.45;
+}
+
+/* ── HERO PRODUCT IMAGE + PULSING GLOW ── */
+.hero-image-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+}
+.hero-image-glow {
+  position: absolute;
+  inset: -14%;
+  z-index: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0,166,81,0.55) 0%,
+    rgba(0,166,81,0.28) 35%,
+    rgba(0,166,81,0) 72%
+  );
+  filter: blur(48px);
+  pointer-events: none;
+  will-change: opacity, transform;
+  animation: hero-glow-pulse 4s ease-in-out infinite;
+}
+.hero-image {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--border-mid);
+  box-shadow:
+    0 24px 60px rgba(0,0,0,0.55),
+    0 0 0 1px rgba(0,166,81,0.08);
+}
+@keyframes hero-glow-pulse {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(0.94);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-image-glow {
+    animation: none;
+    opacity: 0.7;
+  }
 }
 
 /* ── TICKER / MARQUEE ── */
