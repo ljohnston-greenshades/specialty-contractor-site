@@ -187,8 +187,8 @@ body::before {
   padding: 88px 48px 80px;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1.55fr;
-  gap: 56px;
+  grid-template-columns: 1fr 1.75fr;
+  gap: 48px;
   align-items: center;
   flex: 1;
 }
@@ -413,8 +413,8 @@ body::before {
   background: linear-gradient(180deg, #009a48 0%, #00702f 100%);
   display: flex;
   align-items: center;
-  padding: 0 8px;
-  gap: 6px;
+  padding: 0 10px;
+  gap: 8px;
   color: white;
 }
 .hd-logo {
@@ -436,18 +436,18 @@ body::before {
   display: flex;
   gap: 2px;
   align-items: center;
-  flex: 1;
-  margin-left: 4px;
+  flex: 0 1 auto;
   min-width: 0;
+  overflow: hidden;
 }
 .hd-tab {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 5px 7px;
+  padding: 5px 8px;
   font-size: 9px;
   font-weight: 500;
-  color: rgba(255,255,255,0.88);
+  color: rgba(255,255,255,0.9);
   background: transparent;
   border: none;
   border-radius: 4px;
@@ -467,9 +467,10 @@ body::before {
   gap: 8px;
   color: rgba(255,255,255,0.95);
   margin-left: auto;
+  flex: 0 0 auto;
 }
 .hd-search {
-  width: 132px;
+  width: 100px;
   height: 22px;
   background: rgba(255,255,255,0.18);
   border-radius: 4px;
@@ -489,14 +490,14 @@ body::before {
   border: 1px solid rgba(255,255,255,0.35);
 }
 
-/* Body grid */
+/* Body grid: 3 col × 2 row, Numbers spans top 2 cols */
 .hd-body {
-  padding: 10px;
+  padding: 12px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1.1fr;
-  gap: 8px;
+  grid-template-columns: 1fr 1fr 1.05fr;
+  grid-auto-rows: minmax(0, 1fr);
+  gap: 10px;
 }
-.hd-card-warnings { grid-row: span 2; }
 .hd-card-numbers { grid-column: span 2; }
 
 .hd-card {
@@ -559,26 +560,41 @@ body::before {
 .hd-dot-blue { background: #3b82f6; }
 
 /* Numbers at a glance */
-.hd-stats { display: flex; gap: 18px; padding: 2px 0; }
-.hd-stat { display: flex; flex-direction: column; gap: 1px; }
+.hd-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  padding: 6px 0 4px;
+  align-items: start;
+}
+.hd-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: 0;
+}
+.hd-stat-divider {
+  border-left: 1px solid #e7eaee;
+  padding-left: 14px;
+}
 .hd-stat-num {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
   color: #1366c2;
   line-height: 1;
   font-family: var(--font-barlow-condensed), sans-serif;
   letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
 }
 .hd-stat-label {
+  font-size: 8.5px;
+  color: #4b5563;
+  line-height: 1.2;
+  font-weight: 600;
+}
+.hd-stat-delta {
   font-size: 8px;
   color: #6b7280;
-  line-height: 1.2;
-  max-width: 96px;
-}
-.hd-stat-view {
-  font-size: 8px;
-  color: #1366c2;
-  font-weight: 600;
   margin-top: 2px;
 }
 
@@ -640,10 +656,11 @@ body::before {
   letter-spacing: -0.02em;
 }
 .hd-donut-money {
-  font-size: 9.5px;
+  font-size: 15px;
   font-weight: 700;
   color: #1f2937;
   font-family: var(--font-barlow-condensed), sans-serif;
+  letter-spacing: -0.02em;
 }
 .hd-legend, .hd-paylist {
   list-style: none;
@@ -685,11 +702,16 @@ body::before {
 .hd-legend-compact li { font-size: 7.5px; }
 
 /* Tax Filing card */
-.hd-tax-body { display: flex; align-items: center; gap: 8px; }
+.hd-tax-body {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 4px;
+}
 .hd-tax-icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  border-radius: 7px;
   background: #ecfdf5;
   color: #009a48;
   display: flex;
@@ -702,8 +724,22 @@ body::before {
   color: #4b5563;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
   flex: 1;
+  min-width: 0;
+}
+.hd-tax-headline {
+  font-size: 9px;
+  font-weight: 600;
+  color: #1f2937;
+  line-height: 1.25;
+}
+.hd-tax-foot {
+  font-size: 7.5px;
+  color: #6b7280;
+  margin-top: auto;
+  padding-top: 6px;
+  letter-spacing: 0.02em;
 }
 
 /* Pill */
@@ -745,9 +781,9 @@ body::before {
   min-width: 170px;
   max-width: 215px;
 }
-.hd-float-tl { top: 16%; left: -7%; }
-.hd-float-tr { top: 6%;  right: -7%; }
-.hd-float-br { bottom: 10%; right: -3%; }
+.hd-float-tl { top: 28%;    left: -8%; }
+.hd-float-tr { top: 10%;    right: -8%; }
+.hd-float-br { bottom: 6%;  right: -4%; }
 .hd-float-icon {
   width: 30px;
   height: 30px;
