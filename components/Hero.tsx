@@ -1,3 +1,5 @@
+import { HeroDashboard } from "./HeroDashboard";
+
 export function Hero() {
   return (
     <section className="hero">
@@ -29,14 +31,7 @@ export function Hero() {
 
         <div className="hero-image-wrap">
           <div className="hero-image-glow" aria-hidden="true" />
-          <img
-            className="hero-image"
-            src="/images/gs-dark.png"
-            alt="The Flux platform dashboard — a dark-themed payroll and HR cockpit showing period status, employee counts, multi-state tax filings, benefits enrollment progress, and a payroll-complete confirmation for a specialty contractor crew."
-            width={1730}
-            height={909}
-            fetchPriority="high"
-          />
+          <HeroDashboard />
         </div>
       </div>
     </section>
