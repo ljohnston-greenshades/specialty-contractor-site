@@ -12,6 +12,10 @@ import {
   ChevronDown,
   HardHat,
   Clock4,
+  ShieldCheck,
+  IdCard,
+  Scale,
+  HeartPulse,
 } from "lucide-react";
 import type { ReactNode } from "react";
 
@@ -279,6 +283,60 @@ export function HeroDashboard() {
                   <span className="hd-legend-n">14</span>
                 </li>
               </ul>
+            </div>
+          </div>
+
+          {/* Compliance & Filings strip — full width */}
+          <div className="hd-card hd-card-compliance">
+            <div className="hd-card-title">
+              <ShieldCheck size={11} strokeWidth={2} /> Compliance &amp; Filings
+            </div>
+            <div className="hd-compliance-grid">
+              <div className="hd-status">
+                <span className="hd-status-icon hd-status-ok">
+                  <HeartPulse size={10} strokeWidth={2.2} />
+                </span>
+                <div className="hd-status-body">
+                  <div className="hd-status-label">ACA</div>
+                  <div className="hd-status-detail">200 / 200 covered</div>
+                </div>
+              </div>
+              <div className="hd-status">
+                <span className="hd-status-icon hd-status-warn">
+                  <HardHat size={10} strokeWidth={2.2} />
+                </span>
+                <div className="hd-status-body">
+                  <div className="hd-status-label">Certified Payroll</div>
+                  <div className="hd-status-detail">5 active jobs</div>
+                </div>
+              </div>
+              <div className="hd-status">
+                <span className="hd-status-icon hd-status-ok">
+                  <IdCard size={10} strokeWidth={2.2} />
+                </span>
+                <div className="hd-status-body">
+                  <div className="hd-status-label">I-9 / E-Verify</div>
+                  <div className="hd-status-detail">All current</div>
+                </div>
+              </div>
+              <div className="hd-status">
+                <span className="hd-status-icon hd-status-neutral">
+                  <Scale size={10} strokeWidth={2.2} />
+                </span>
+                <div className="hd-status-body">
+                  <div className="hd-status-label">Garnishments</div>
+                  <div className="hd-status-detail">4 active orders</div>
+                </div>
+              </div>
+              <div className="hd-status">
+                <span className="hd-status-icon hd-status-ok">
+                  <FileCheck2 size={10} strokeWidth={2.2} />
+                </span>
+                <div className="hd-status-body">
+                  <div className="hd-status-label">Workers Comp</div>
+                  <div className="hd-status-detail">Audit ready</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

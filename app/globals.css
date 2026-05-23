@@ -490,15 +490,17 @@ body::before {
   border: 1px solid rgba(255,255,255,0.35);
 }
 
-/* Body grid: 3 col × 2 row, Numbers spans top 2 cols */
+/* Body grid: 3 col × 3 row. Numbers spans top 2 cols.
+   Bottom row (compliance & filings) spans all 3 cols. */
 .hd-body {
   padding: 12px;
   display: grid;
   grid-template-columns: 1fr 1fr 1.05fr;
-  grid-auto-rows: minmax(0, 1fr);
+  grid-template-rows: 1fr 1fr auto;
   gap: 10px;
 }
 .hd-card-numbers { grid-column: span 2; }
+.hd-card-compliance { grid-column: span 3; }
 
 .hd-card {
   background: white;
@@ -742,6 +744,55 @@ body::before {
   letter-spacing: 0.02em;
 }
 
+/* Compliance & Filings strip */
+.hd-compliance-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin-top: 4px;
+}
+.hd-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 12px;
+  border-left: 1px solid #e7eaee;
+  min-width: 0;
+}
+.hd-status:first-child {
+  border-left: none;
+  padding-left: 2px;
+}
+.hd-status-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.hd-status-icon.hd-status-ok      { background: #ecfdf5; color: #047857; }
+.hd-status-icon.hd-status-warn    { background: #fef3c7; color: #b45309; }
+.hd-status-icon.hd-status-neutral { background: #eef2f6; color: #4b5563; }
+.hd-status-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+  line-height: 1.15;
+}
+.hd-status-label {
+  font-size: 8.5px;
+  font-weight: 600;
+  color: #1f2937;
+  white-space: nowrap;
+}
+.hd-status-detail {
+  font-size: 7.5px;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
 /* Pill */
 .hd-pill {
   display: inline-flex;
@@ -764,60 +815,84 @@ body::before {
 .hd-pill-dot-yellow { background: #f59e0b; }
 .hd-pill-dot-green { background: #10b981; }
 
-/* ── FLOATING CALLOUTS ── */
+/* ── FLOATING CALLOUTS (annotation layer over the dashboard) ──
+   Dark "notification" treatment so they sit clearly above the
+   white product UI instead of competing with it. Brand-green
+   accents tie them back to Greenshades. */
 .hd-float {
   position: absolute;
   z-index: 5;
-  background: white;
-  border-radius: 9px;
-  padding: 9px 11px;
+  background:
+    linear-gradient(180deg, #1a2230 0%, #0d141d 100%);
+  border-radius: 10px;
+  padding: 10px 12px 11px;
   display: flex;
-  gap: 8px;
+  gap: 9px;
   box-shadow:
-    0 12px 28px rgba(15,23,42,0.18),
-    0 0 0 1px rgba(15,23,42,0.05);
+    0 18px 36px rgba(8, 13, 21, 0.32),
+    0 2px 6px rgba(8, 13, 21, 0.18),
+    inset 0 1px 0 rgba(255,255,255,0.05);
   font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
-  color: #1f2937;
-  min-width: 170px;
+  color: #e5e7eb;
+  min-width: 175px;
   max-width: 215px;
 }
-.hd-float-tl { top: 28%;    left: -8%; }
-.hd-float-tr { top: 10%;    right: -8%; }
-.hd-float-br { bottom: 6%;  right: -4%; }
+.hd-float-tl { top: 32%;    left: -10%; }
+.hd-float-tr { top: 12%;    right: -10%; }
+.hd-float-br { bottom: -2%; right: -4%; }
 .hd-float-icon {
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   border-radius: 7px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(0,166,81,0.18);
+  color: #34d399;
 }
-.hd-float-icon-warn  { background: #fef3c7; color: #b45309; }
-.hd-float-icon-money { background: #ecfdf5; color: #047857; }
-.hd-float-icon-check { background: #ecfdf5; color: #047857; }
-.hd-float-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.hd-float-icon-warn {
+  background: rgba(251,191,36,0.14);
+  color: #fbbf24;
+}
+.hd-float-icon-money,
+.hd-float-icon-check {
+  background: rgba(0,166,81,0.18);
+  color: #34d399;
+}
+.hd-float-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
 .hd-float-title {
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
-  color: #111827;
+  color: #ffffff;
   line-height: 1.2;
+  letter-spacing: 0.01em;
 }
 .hd-float-text {
   font-size: 9px;
-  color: #4b5563;
-  line-height: 1.35;
+  color: #9ca3af;
+  line-height: 1.4;
 }
 .hd-float-pill {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   font-size: 8.5px;
-  color: #4b5563;
+  color: #d1d5db;
   font-weight: 500;
-  margin-top: 3px;
-  align-self: flex-start;
+  margin-top: 5px;
+  padding-top: 5px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  align-self: stretch;
 }
+.hd-float .hd-pill-dot { width: 6px; height: 6px; }
+.hd-float .hd-pill-dot-green  { background: #34d399; }
+.hd-float .hd-pill-dot-yellow { background: #fbbf24; }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-image-glow {
