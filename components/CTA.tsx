@@ -8,9 +8,9 @@ export function CTA() {
           <div className="section-label">Get Started</div>
           <h2 className="section-title">See Flux built for your trade</h2>
           <p className="cta-body">
-            Walk through a live demo built around the complexity your crews
-            actually deal with — multi-state taxes, variable pay rates, and
-            all. No generic overview, no sales theater.
+            See a live demo built around the complexity your crews
+            actually deal with — multi-state taxes, blended overtime,
+            certified payroll, and the rest.
           </p>
         </div>
         <form

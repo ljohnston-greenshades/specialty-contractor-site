@@ -52,9 +52,8 @@ export function CrewsInAction() {
             </h2>
           </div>
           <p className="crews-header-sub">
-            Flux runs payroll for the people doing the work — not the
-            corner office. These are the trades and the conditions our
-            platform was designed around from day one.
+            These are the people on Flux payroll — and the working
+            conditions the platform was designed around.
           </p>
         </div>
         <div className="crews-grid">

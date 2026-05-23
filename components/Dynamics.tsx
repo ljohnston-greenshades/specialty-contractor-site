@@ -30,11 +30,10 @@ export function Dynamics() {
               Moving off GP? On Business Central? We’re native to both.
             </h2>
             <p className="dynamics-intro">
-              The most common buying trigger we see in specialty contracting is
-              an ERP migration — GP reaching end-of-life, a move to Business
-              Central. Flux is built for exactly this transition: bidirectional
-              integration, no forced data re-entry, 20+ years of
-              Dynamics-specific expertise.
+              If you're moving off Dynamics GP or already on Business
+              Central, Flux is built for it. Two-way integration, no
+              data re-entry, and 20+ years of working hands-on with the
+              Microsoft Dynamics stack.
             </p>
             <div className="dynamics-points">
               {POINTS.map((p) => (

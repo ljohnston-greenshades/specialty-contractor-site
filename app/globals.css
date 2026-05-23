@@ -1091,18 +1091,6 @@ body::before {
 }
 .cap-card:hover::after { background: var(--brand); }
 
-.cap-letter {
-  font-family: var(--font-barlow-condensed), sans-serif;
-  font-weight: 900;
-  font-size: 5rem;
-  line-height: 1;
-  color: rgba(255,255,255,0.04);
-  position: absolute;
-  bottom: 16px;
-  right: 20px;
-  letter-spacing: -0.04em;
-}
-
 .cap-icon-box {
   width: 42px;
   height: 42px;

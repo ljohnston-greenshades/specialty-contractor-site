@@ -20,37 +20,37 @@ const PAIN_POINTS: PainPoint[] = [
     num: "01",
     Icon: Map,
     title: "Workers crossing state lines",
-    body: "A single technician might work in three states in one week. Most platforms make multi-state tax filing a manual headache. Flux handles it automatically, per employee, per pay period.",
+    body: "A technician might work in three states in one week. Flux assigns the right tax jurisdiction per employee, per pay period — automatically.",
   },
   {
     num: "02",
     Icon: Calculator,
     title: "Multiple pay rates, one run",
-    body: "Overtime on a blended rate. Different scales by trade or job type. Prevailing wage tiers for government-funded work. These aren’t edge cases in specialty contracting — they’re the norm.",
+    body: "Blended overtime, per-trade scales, prevailing wage tiers. In the trades, that's just Tuesday. Flux handles all of it in a single pay run.",
   },
   {
     num: "03",
     Icon: ClipboardCheck,
     title: "Compliance that keeps changing",
-    body: "FLSA, ACA, garnishments, wage base adjustments — the regulatory surface is wide and the stakes are high. Flux keeps you current without requiring a compliance team to manage it.",
+    body: "FLSA, ACA, garnishments, state wage bases — the rules shift constantly. Flux keeps you current so you're not staffing a compliance team to do it.",
   },
   {
     num: "04",
     Icon: Smartphone,
-    title: "A workforce that’s never at a desk",
-    body: "Your crew needs to access pay stubs, update their info, and submit time from the field — not from a desktop portal that assumes an office exists. Flux is mobile-first by design.",
+    title: "A workforce that's never at a desk",
+    body: "Your crew submits time, grabs pay stubs, and updates their info from a phone — not a desktop portal that assumes they're at a desk.",
   },
   {
     num: "05",
     Icon: Repeat,
     title: "Seasonal swings and off-cycle pay",
-    body: "Peak season means fast onboarding and off-cycle runs. Flux supports unlimited pay runs and makes seasonal workforce management actually manageable — at no extra charge.",
+    body: "Peak season means rapid onboarding and emergency pay runs. Flux supports unlimited runs — no per-run fees, no apologies.",
   },
   {
     num: "06",
     Icon: Link2,
     title: "Payroll siloed from your ERP",
-    body: "When payroll data doesn’t talk to your ERP, you’re exporting CSVs and reconciling manually. Flux integrates natively with Microsoft Dynamics — bidirectional, no scripts required.",
+    body: "When payroll doesn't talk to your ERP, you're exporting CSVs and reconciling by hand. Flux connects natively to Microsoft Dynamics — both directions, no scripts.",
   },
 ];
 
@@ -69,8 +69,8 @@ export function Pain() {
           </p>
           <div className="pain-callout">
             <p>
-              Specialty contractors are still force-fitting horizontal
-              software to vertical problems. There’s a better way.
+              In the trades, complexity isn't the exception. It's the work.
+              Your payroll should be built around that.
             </p>
           </div>
         </div>

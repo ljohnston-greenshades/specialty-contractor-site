@@ -40,9 +40,8 @@ export function Trades() {
             </h2>
           </div>
           <p className="trades-header-sub">
-            Whether you’re running a 15-person plumbing company or a
-            multi-state HVAC operation, Flux scales with your workforce
-            complexity.
+            From a 15-person plumbing shop to a multi-state HVAC operation,
+            Flux scales with the way you actually staff.
           </p>
         </div>
         <div className="trades-grid">

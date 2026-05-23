@@ -19,9 +19,9 @@ export function Hero() {
           </h1>
           <p className="hero-sub">
             Multi-rate pay, multi-state taxes, workers across a dozen job
-            sites — most platforms weren&apos;t designed for this. Flux was.
-            We&apos;re the payroll backbone for hundreds of plumbing, HVAC,
-            electrical, and landscaping companies.
+            sites — most platforms weren&apos;t built for this. Flux was.
+            Hundreds of plumbing, HVAC, electrical, and landscaping
+            companies run on it.
           </p>
           <div className="hero-ctas">
             <a href="#demo" className="btn-primary">Request a Demo</a>

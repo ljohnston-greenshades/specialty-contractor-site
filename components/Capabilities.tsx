@@ -9,7 +9,6 @@ import {
 } from "lucide-react";
 
 type Capability = {
-  letter: string;
   Icon: LucideIcon;
   title: string;
   body: string;
@@ -18,45 +17,39 @@ type Capability = {
 
 const CAPABILITIES: Capability[] = [
   {
-    letter: "P",
     Icon: SlidersHorizontal,
     title: "Multi-Rate & Complex Payroll",
-    body: "Blended overtime, shift differentials, prevailing wage tiers, and per-trade pay scales — all in a single pay run. Average customer runs payroll in under 10 minutes, regardless of complexity.",
+    body: "Blended overtime, shift differentials, prevailing wage tiers, and per-trade scales — all in a single pay run. Most customers finish payroll in under 10 minutes.",
     tags: ["Blended overtime", "Prevailing wage", "Multiple pay schedules"],
   },
   {
-    letter: "T",
     Icon: Globe2,
     title: "Multi-State Tax & Compliance",
-    body: "Automatic tax calculation across every state where employees work. Nexus determination, local jurisdiction handling, and year-end reporting handled without manual intervention.",
+    body: "Tax calculated automatically for every state your crew works in. Local jurisdictions, nexus, and year-end filings handled without manual overrides.",
     tags: ["All 50 states", "Local jurisdictions", "Year-end filing"],
   },
   {
-    letter: "C",
     Icon: BarChart3,
     title: "Cost Accounting & GL Integration",
-    body: "Map payroll costs to jobs, projects, and cost centers automatically. Earnings and benefits post directly to your general ledger — full visibility into labor cost by project.",
+    body: "Payroll costs map to jobs, projects, and cost centers automatically. Earnings and benefits post straight to your GL — clean labor cost by project.",
     tags: ["Job costing", "GL auto-posting", "Project tracking"],
   },
   {
-    letter: "E",
     Icon: TabletSmartphone,
     title: "Employee Self-Service (Mobile)",
-    body: "Give field workers a mobile dashboard for pay stubs, W-2s, time-off requests, and benefits enrollment — from their phone. Significantly reduces HR admin load in high-headcount environments.",
+    body: "Field workers get pay stubs, W-2s, time-off requests, and benefits enrollment on their phone. Less HR phone tag, especially when crews scale.",
     tags: ["Mobile-first", "Pay stubs & W-2s", "Benefits enrollment"],
   },
   {
-    letter: "R",
     Icon: ShieldCheck,
     title: "ACA, FLSA & Garnishment Compliance",
-    body: "Automated compliance tracking for ACA eligibility, FLSA wage-and-hour rules, and garnishment deductions. Real-time validation flags issues before payroll submits — not after an audit.",
+    body: "ACA eligibility, FLSA wage-and-hour, garnishment deductions — tracked and validated before payroll submits. Issues surface before an audit finds them.",
     tags: ["ACA tracking", "FLSA", "Garnishments"],
   },
   {
-    letter: "H",
     Icon: Users,
     title: "HR & Benefits Administration",
-    body: "Manage the full employee lifecycle — onboarding, benefits enrollment, OSHA and safety training (LMS), and offboarding. Built for high seasonal turnover and complex benefits structures.",
+    body: "Onboarding, benefits enrollment, OSHA and safety training, offboarding — the whole employee lifecycle. Built for seasonal turnover and trade-specific benefits.",
     tags: ["Onboarding", "Safety training", "Benefits admin"],
   },
 ];
@@ -70,13 +63,12 @@ export function Capabilities() {
           What Flux handles for your trade business
         </h2>
         <p className="section-sub">
-          Payroll, HR, tax, and compliance capabilities built for how
-          specialty contractors actually operate.
+          Everything a specialty contractor needs to run payroll, taxes,
+          and HR — in one platform.
         </p>
         <div className="cap-grid">
-          {CAPABILITIES.map(({ letter, Icon, title, body, tags }) => (
+          {CAPABILITIES.map(({ Icon, title, body, tags }) => (
             <div className="cap-card" key={title}>
-              <div className="cap-letter">{letter}</div>
               <div className="cap-icon-box">
                 <Icon size={20} strokeWidth={1.75} aria-hidden="true" />
               </div>

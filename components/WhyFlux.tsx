@@ -2,27 +2,22 @@ const DIFFERENTIATORS = [
   {
     n: "01",
     title: "Multi-state tax is native, not bolted on",
-    body: "When your technicians work across state lines, Flux automatically assigns the correct tax jurisdiction per work location — no manual overrides, no year-end surprises.",
+    body: "Flux assigns the right tax jurisdiction per work location automatically. No manual overrides. No year-end scrambles.",
   },
   {
     n: "02",
     title: "Unlimited pay runs, no extra charge",
-    body: "Off-cycle runs for a new hire on a rushed project? Emergency payroll for a terminated seasonal worker? Flux doesn’t charge you for running payroll when your business needs it.",
+    body: "Off-cycle runs, emergency runs, holiday catch-ups. Run payroll as often as you need to — never with a per-run fee.",
   },
   {
     n: "03",
-    title: "Deep ERP integration — 20+ years of it",
-    body: "If you’re running Microsoft Dynamics GP or moving to Business Central, Flux connects natively. Data flows bidirectionally. No CSV exports, no manual GL reconciliation.",
+    title: "Real support when it counts",
+    body: "Payroll day is tomorrow and something's wrong. With Flux you get a real person on the phone — no ticket queue, no offshore triage.",
   },
   {
     n: "04",
-    title: "Real support — real people, not a case number",
-    body: "Contractors tell us: with Flux, they actually get someone on the phone. No ticket queue, no offshore triage. This matters when payroll day is tomorrow and something’s wrong.",
-  },
-  {
-    n: "05",
     title: "Proven across hundreds of contractor businesses",
-    body: "535+ construction and specialty trade customers means we’ve seen the edge cases. Multi-jurisdiction overtime, blended rates, certified payroll — built around these, not away from them.",
+    body: "535+ construction and specialty trade customers. We've seen multi-jurisdiction overtime, blended rates, and certified payroll because they're how the trades work — not exceptions.",
   },
 ];
 
@@ -34,16 +29,14 @@ export function WhyFlux() {
           <div className="why-left">
             <div className="section-label">Why Flux</div>
             <h2 className="section-title">
-              We win here because we’re built for it
+              What sets Flux apart
             </h2>
             <p className="why-left-sub">
-              Most platforms you’ll evaluate are horizontal HCM tools with
-              construction features bolted on. Flux is different — our core
-              architecture was built for exactly the complexity specialty
-              contractors live with every day.
+              When you compare options, these are the things contractors
+              tell us keep coming up.
             </p>
             <a href="#demo" className="btn-primary">See it in action →</a>
-            <div className="why-big-num">5</div>
+            <div className="why-big-num">4</div>
           </div>
           <div className="diff-list">
             {DIFFERENTIATORS.map((d) => (
