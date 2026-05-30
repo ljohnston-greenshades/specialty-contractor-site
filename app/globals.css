@@ -1312,88 +1312,92 @@ body::before {
 }
 .dyn-point p strong { color: var(--off-white); font-weight: 600; }
 
-/* ERP visual */
-.erp-diagram { position: relative; }
-.erp-box {
-  border: 1px solid var(--border-mid);
-  padding: 20px 24px;
-  background: var(--dark-3);
-  margin-bottom: 2px;
+/* Integrations grid (right column of the integrations section) */
+.integrations-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
-.erp-box.highlighted {
-  background: rgba(0,166,81,0.07);
-  border-color: rgba(0,166,81,0.35);
-  border-width: 1.5px;
-}
-.erp-box-label {
+.integration-group-label {
   font-family: var(--font-barlow-condensed), sans-serif;
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--steel);
-  margin-bottom: 4px;
+  margin-bottom: 10px;
 }
-.erp-box-name {
-  font-family: var(--font-barlow-condensed), sans-serif;
-  font-weight: 800;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--white);
-}
-.erp-box.highlighted .erp-box-name { color: var(--brand); }
-.erp-box-sub {
-  font-size: 0.8rem;
-  color: var(--steel);
-  margin-top: 4px;
-}
-.erp-connector {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px 0;
+.integration-tiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 8px;
 }
-.erp-connector-inner {
+.integration-tile {
+  background: var(--dark-3);
+  border: 1px solid var(--border-mid);
+  padding: 12px 14px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 2px;
+  gap: 3px;
+  transition: border-color 0.15s, background 0.15s;
 }
-.erp-connector-line {
-  width: 1px;
-  height: 24px;
-  background: rgba(0,166,81,0.4);
-  display: block;
+.integration-tile:hover {
+  border-color: rgba(0,166,81,0.45);
+  background: rgba(0,166,81,0.04);
 }
-.erp-connector-label {
+.integration-tile-feature {
+  background: rgba(0,166,81,0.07);
+  border-color: rgba(0,166,81,0.35);
+}
+.integration-name {
   font-family: var(--font-barlow-condensed), sans-serif;
-  font-size: 0.7rem;
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 0.95rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--brand);
-  padding: 0 8px;
-  white-space: nowrap;
+  letter-spacing: 0.03em;
+  color: var(--white);
+  line-height: 1.1;
 }
-.erp-modules-row {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2px;
-  margin-top: 2px;
+.integration-tile-feature .integration-name { color: var(--brand); }
+.integration-detail {
+  font-size: 0.74rem;
+  color: var(--steel);
+  line-height: 1.3;
 }
-.erp-module {
+
+.integration-api {
   background: var(--dark-3);
-  border: 1px solid var(--border);
-  padding: 10px 14px;
+  border: 1px dashed rgba(0,166,81,0.45);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.integration-api-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0,166,81,0.12);
+  color: var(--brand);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.integration-api-title {
   font-family: var(--font-barlow-condensed), sans-serif;
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 1rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: rgba(255,255,255,0.5);
-  text-align: center;
+  letter-spacing: 0.03em;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 3px;
+}
+.integration-api-sub {
+  font-size: 0.78rem;
+  color: var(--steel);
+  line-height: 1.4;
 }
 
 /* ── CTA SECTION ── */

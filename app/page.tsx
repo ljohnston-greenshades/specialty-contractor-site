@@ -7,7 +7,7 @@ import { Trades } from "@/components/Trades";
 import { CrewsInAction } from "@/components/CrewsInAction";
 import { WhyTradePay } from "@/components/WhyTradePay";
 import { Testimonial } from "@/components/Testimonial";
-import { Dynamics } from "@/components/Dynamics";
+import { Integrations } from "@/components/Integrations";
 import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
 
@@ -23,7 +23,7 @@ export default function Home() {
       <CrewsInAction />
       <WhyTradePay />
       <Testimonial />
-      <Dynamics />
+      <Integrations />
       <CTA />
       <Footer />
     </>
