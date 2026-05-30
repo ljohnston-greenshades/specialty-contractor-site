@@ -1,75 +1,116 @@
 import {
-  Users,
+  LayoutDashboard,
   DollarSign,
-  History,
-  FileText,
+  Users,
+  Clock4,
+  Globe2,
+  ShieldCheck,
+  HardHat,
   BarChart3,
+  Settings,
   Search,
   Bell,
-  AlertTriangle,
-  FileCheck2,
+  ArrowUp,
   Check,
-  ChevronDown,
-  HardHat,
-  Clock4,
-  ShieldCheck,
+  HeartPulse,
   IdCard,
   Scale,
-  HeartPulse,
+  FileCheck2,
+  MapPin,
+  SlidersHorizontal,
+  type LucideIcon,
 } from "lucide-react";
-import type { ReactNode } from "react";
 
-type Segment = { value: number; color: string };
+type SidebarItem = { Icon: LucideIcon; label: string; active?: boolean };
 
-function Donut({
-  size = 86,
-  thickness = 10,
-  center,
-  segments,
-}: {
-  size?: number;
-  thickness?: number;
-  center: ReactNode;
-  segments: Segment[];
-}) {
-  const r = (size - thickness) / 2;
-  const c = 2 * Math.PI * r;
-  const total = segments.reduce((s, x) => s + x.value, 0) || 1;
-  let offset = 0;
+const SIDEBAR: SidebarItem[] = [
+  { Icon: LayoutDashboard, label: "Dashboard", active: true },
+  { Icon: DollarSign, label: "Pay Runs" },
+  { Icon: Users, label: "Employees" },
+  { Icon: Clock4, label: "Time & Attendance" },
+  { Icon: Globe2, label: "Tax Center" },
+  { Icon: ShieldCheck, label: "Compliance" },
+  { Icon: HardHat, label: "Job Costing" },
+  { Icon: BarChart3, label: "Reports" },
+];
+
+// Last 12 pay periods (Oct 2025 → Mar 2026), $ thousands
+const TREND_DATA = [720, 738, 760, 745, 780, 808, 830, 848, 866, 880, 878, 892];
+const TREND_LABELS = ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"];
+
+const PAY_RUNS = [
+  { id: "PR-2026-06", period: "Mar 1 – Mar 14", amount: "$892,450" },
+  { id: "PR-2026-05", period: "Feb 15 – Feb 28", amount: "$878,210" },
+  // Highlights unlimited pay runs — off-cycle for a rapid hire
+  { id: "PR-2026-OFF", period: "Off-cycle · Onboarding", amount: "$4,820", offcycle: true },
+  { id: "PR-2026-04", period: "Feb 1 – Feb 14", amount: "$864,500" },
+];
+
+const TILES: { Icon: LucideIcon; num: string; label: string }[] = [
+  { Icon: Globe2, num: "14", label: "States active" },
+  { Icon: Clock4, num: "83", label: "Clocked in now" },
+  { Icon: HardHat, num: "5", label: "Prevailing-wage jobs" },
+  { Icon: MapPin, num: "32", label: "Crews on-site" },
+];
+
+const COMPLIANCE: {
+  Icon: LucideIcon;
+  label: string;
+  detail: string;
+  tone: "ok" | "warn" | "neutral";
+}[] = [
+  { Icon: HeartPulse, label: "ACA", detail: "200 / 200 covered", tone: "ok" },
+  { Icon: HardHat, label: "Certified Payroll", detail: "5 active jobs", tone: "warn" },
+  { Icon: IdCard, label: "I-9 / E-Verify", detail: "All current", tone: "ok" },
+  { Icon: Scale, label: "Garnishments", detail: "4 active orders", tone: "neutral" },
+  { Icon: FileCheck2, label: "Workers Comp", detail: "Audit ready", tone: "ok" },
+];
+
+function AreaChart({ data }: { data: number[] }) {
+  const w = 320;
+  const h = 88;
+  const pad = { l: 4, r: 4, t: 6, b: 4 };
+  const innerW = w - pad.l - pad.r;
+  const innerH = h - pad.t - pad.b;
+  const max = Math.max(...data);
+  const min = Math.min(...data);
+  const range = max - min || 1;
+  const stepX = innerW / (data.length - 1);
+  const pts = data.map((v, i) => ({
+    x: pad.l + i * stepX,
+    y: pad.t + (1 - (v - min) / range) * innerH,
+  }));
+  const polyPoints = pts.map((p) => `${p.x.toFixed(2)},${p.y.toFixed(2)}`).join(" ");
+  const last = pts[pts.length - 1];
+  const first = pts[0];
+  const bottom = pad.t + innerH;
+  const areaPoints = `${first.x.toFixed(2)},${bottom} ${polyPoints} ${last.x.toFixed(2)},${bottom}`;
+
   return (
-    <div className="hd-donut" style={{ width: size, height: size }}>
-      <svg viewBox={`0 0 ${size} ${size}`} width={size} height={size}>
-        <circle
-          cx={size / 2}
-          cy={size / 2}
-          r={r}
-          fill="none"
-          stroke="#e7eaee"
-          strokeWidth={thickness}
-        />
-        {segments.map((s, i) => {
-          const dash = (s.value / total) * c;
-          const el = (
-            <circle
-              key={i}
-              cx={size / 2}
-              cy={size / 2}
-              r={r}
-              fill="none"
-              stroke={s.color}
-              strokeWidth={thickness}
-              strokeLinecap="butt"
-              strokeDasharray={`${dash} ${c - dash}`}
-              strokeDashoffset={-offset}
-              transform={`rotate(-90 ${size / 2} ${size / 2})`}
-            />
-          );
-          offset += dash;
-          return el;
-        })}
-      </svg>
-      <div className="hd-donut-center">{center}</div>
-    </div>
+    <svg
+      viewBox={`0 0 ${w} ${h}`}
+      preserveAspectRatio="none"
+      className="hd-chart-svg"
+    >
+      <defs>
+        <linearGradient id="trendFill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#10b981" stopOpacity="0.24" />
+          <stop offset="100%" stopColor="#10b981" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      <polygon points={areaPoints} fill="url(#trendFill)" />
+      <polyline
+        points={polyPoints}
+        fill="none"
+        stroke="#059669"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+        strokeLinecap="round"
+        vectorEffect="non-scaling-stroke"
+      />
+      <circle cx={last.x} cy={last.y} r="4.5" fill="#059669" fillOpacity="0.18" />
+      <circle cx={last.x} cy={last.y} r="2.4" fill="#059669" />
+    </svg>
   );
 }
 
@@ -78,319 +119,171 @@ export function HeroDashboard() {
     <div
       className="hero-dashboard"
       role="img"
-      aria-label="Greenshades dashboard interface showing employee counts across multiple states, live payroll totals, multi-state tax filings ready, and floating notifications for certified payroll filed, blended overtime resolved, and payroll completed for a specialty contractor."
+      aria-label="Flux dashboard built on Greenshades — a payroll and HR cockpit for specialty contractors showing the current pay run total, active employees, multi-state tax filings, prevailing-wage projects, a payroll spend trend, recent pay runs including an off-cycle run, and a compliance strip covering ACA, certified payroll, I-9, garnishments, and workers comp."
     >
       <div className="hd-window">
-        {/* ─── Top nav ─── */}
-        <nav className="hd-topnav">
-          <div className="hd-logo">G</div>
-          <div className="hd-tabs">
-            <span className="hd-tab hd-tab-active">
-              <Users size={11} strokeWidth={2} /> Employees
-            </span>
-            <span className="hd-tab">
-              <DollarSign size={11} strokeWidth={2} /> Payroll
-            </span>
-            <span className="hd-tab">
-              <History size={11} strokeWidth={2} /> Pay History
-            </span>
-            <span className="hd-tab">
-              <FileText size={11} strokeWidth={2} /> Tax Filing
-            </span>
-            <span className="hd-tab">
-              <BarChart3 size={11} strokeWidth={2} /> Reports
-            </span>
-          </div>
-          <div className="hd-nav-right">
+        {/* ─── Sidebar ─── */}
+        <aside className="hd-sidebar">
+          <div className="hd-sidebar-logo">G</div>
+          <div className="hd-sidebar-divider" />
+          <nav className="hd-sidebar-nav">
+            {SIDEBAR.map(({ Icon, label, active }) => (
+              <span
+                key={label}
+                className={`hd-sidebar-btn${active ? " hd-sidebar-active" : ""}`}
+                title={label}
+              >
+                <Icon size={14} strokeWidth={1.9} />
+              </span>
+            ))}
+          </nav>
+          <span className="hd-sidebar-btn hd-sidebar-bottom" title="Settings">
+            <Settings size={14} strokeWidth={1.9} />
+          </span>
+        </aside>
+
+        {/* ─── Main ─── */}
+        <div className="hd-main">
+          {/* Top bar */}
+          <header className="hd-topbar">
             <div className="hd-search">
-              <span>Search…</span>
               <Search size={10} strokeWidth={2.5} />
+              <span>Search employees, pay runs, jobs…</span>
             </div>
-            <Bell size={12} strokeWidth={2} />
-            <div className="hd-avatar" />
-          </div>
-        </nav>
+            <span className="hd-topbar-spacer" />
+            <Bell size={12} strokeWidth={2} className="hd-topbar-icon" />
+            <div className="hd-topbar-avatar" />
+          </header>
 
-        {/* ─── Body grid (3 col × 2 row) ─── */}
-        <div className="hd-body">
-          {/* Numbers at a Glance — top, spans 2 cols */}
-          <div className="hd-card hd-card-numbers">
-            <div className="hd-card-title">
-              Numbers at a Glance
-              <ChevronDown size={10} className="hd-chev" strokeWidth={2} />
-            </div>
-            <div className="hd-stats">
-              <div className="hd-stat">
-                <div className="hd-stat-num">248</div>
-                <div className="hd-stat-label">Active employees</div>
-                <div className="hd-stat-delta">+12 this period</div>
-              </div>
-              <div className="hd-stat hd-stat-divider">
-                <div className="hd-stat-num">14</div>
-                <div className="hd-stat-label">States active</div>
-                <div className="hd-stat-delta">47 jurisdictions</div>
-              </div>
-              <div className="hd-stat hd-stat-divider">
-                <div className="hd-stat-num">83</div>
-                <div className="hd-stat-label">Clocked in now</div>
-                <div className="hd-stat-delta">32 crews on-site</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Pay History donut — top right */}
-          <div className="hd-card">
-            <div className="hd-card-title">
-              <DollarSign size={11} strokeWidth={2} /> Employee Pay History
-              <ChevronDown size={10} className="hd-chev" strokeWidth={2} />
-            </div>
-            <div className="hd-card-subtitle">Mar 1 – Mar 14, 2026</div>
-            <div className="hd-chart-row">
-              <Donut
-                size={88}
-                thickness={11}
-                center={<div className="hd-donut-money">$1.37M</div>}
-                segments={[
-                  { value: 892, color: "#10b981" },
-                  { value: 178, color: "#7c3aed" },
-                  { value: 134, color: "#f97316" },
-                  { value: 108, color: "#f5c842" },
-                  { value: 62, color: "#94a3b8" },
-                ]}
-              />
-              <ul className="hd-paylist">
-                <li>
-                  <span className="hd-sq" style={{ background: "#10b981" }} />
-                  Gross Pay <span className="hd-legend-n">$892,450</span>
-                </li>
-                <li>
-                  <span className="hd-sq" style={{ background: "#7c3aed" }} />
-                  Employee Tax
-                  <span className="hd-legend-n">$178,490</span>
-                </li>
-                <li>
-                  <span className="hd-sq" style={{ background: "#f97316" }} />
-                  Benefits <span className="hd-legend-n">$134,200</span>
-                </li>
-                <li>
-                  <span className="hd-sq" style={{ background: "#f5c842" }} />
-                  Employer Tax
-                  <span className="hd-legend-n">$108,630</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Warnings — bottom left */}
-          <div className="hd-card">
-            <div className="hd-card-title">
-              <AlertTriangle size={11} strokeWidth={2} /> Warnings
-              <ChevronDown size={10} className="hd-chev" strokeWidth={2} />
-            </div>
-            <ul className="hd-list">
-              <li className="hd-row">
-                <span className="hd-dot hd-dot-red" />
-                <span>
-                  <strong>Critical:</strong> 2 job sites in TX missing
-                  full address.
-                </span>
-              </li>
-              <li className="hd-row">
-                <span className="hd-dot hd-dot-pink" />
-                <span>
-                  <strong>Critical:</strong> Duplicate SSN flagged on 2
-                  new hires.
-                </span>
-              </li>
-              <li className="hd-row">
-                <span className="hd-dot hd-dot-yellow" />
-                <span>
-                  <strong>Moderate:</strong> 6 technicians missing I-9
-                  completion.
-                </span>
-              </li>
-              <li className="hd-row">
-                <span className="hd-dot hd-dot-orange" />
-                <span>
-                  <strong>Past Due:</strong> 3 invoices · $4,812 outstanding.
-                </span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Tax Filing Ready — bottom middle */}
-          <div className="hd-card hd-card-tax">
-            <div className="hd-card-title">
-              <FileCheck2 size={11} strokeWidth={2} /> Tax Filing Ready
-            </div>
-            <div className="hd-tax-body">
-              <div className="hd-tax-icon">
-                <FileCheck2 size={16} strokeWidth={1.8} />
-              </div>
-              <div className="hd-tax-text">
-                <div className="hd-tax-headline">
-                  Multi-state withholdings calculated
+          {/* Content */}
+          <div className="hd-content">
+            {/* Greeting */}
+            <div className="hd-greeting">
+              <div>
+                <div className="hd-greeting-title">Welcome back, Maria</div>
+                <div className="hd-greeting-sub">
+                  Pay Period · Mar 1 – Mar 14, 2026
                 </div>
-                <div className="hd-pill">
-                  <span className="hd-pill-dot hd-pill-dot-green" />
-                  47 / 47 jurisdictions filed
+              </div>
+              <div className="hd-customize">
+                <SlidersHorizontal size={10} strokeWidth={2} />
+                Customize
+              </div>
+            </div>
+
+            {/* KPI cards */}
+            <div className="hd-kpis">
+              <div className="hd-kpi">
+                <div className="hd-kpi-label">Current pay run</div>
+                <div className="hd-kpi-num">$892,450</div>
+                <div className="hd-kpi-delta up">
+                  <ArrowUp size={9} strokeWidth={2.8} />
+                  5.2% vs last period
+                </div>
+              </div>
+              <div className="hd-kpi">
+                <div className="hd-kpi-label">Active employees</div>
+                <div className="hd-kpi-num">248</div>
+                <div className="hd-kpi-delta up">
+                  <ArrowUp size={9} strokeWidth={2.8} />
+                  +12 new hires
+                </div>
+              </div>
+              <div className="hd-kpi">
+                <div className="hd-kpi-label">Multi-state filings</div>
+                <div className="hd-kpi-num">
+                  47 <span className="hd-kpi-num-soft">/ 47</span>
+                </div>
+                <div className="hd-kpi-delta ok">
+                  <Check size={9} strokeWidth={3} />
+                  All jurisdictions current
                 </div>
               </div>
             </div>
-            <div className="hd-tax-foot">
-              FL · GA · AL · NC · SC · TN +9 more
-            </div>
-          </div>
 
-          {/* Employees donut — bottom right */}
-          <div className="hd-card">
-            <div className="hd-card-title">
-              <Users size={11} strokeWidth={2} /> Employee Mix
-              <ChevronDown size={10} className="hd-chev" strokeWidth={2} />
+            {/* Stat tiles */}
+            <div className="hd-tiles">
+              {TILES.map(({ Icon, num, label }) => (
+                <div className="hd-tile" key={label}>
+                  <div className="hd-tile-icon">
+                    <Icon size={12} strokeWidth={2} />
+                  </div>
+                  <div className="hd-tile-body">
+                    <div className="hd-tile-num">{num}</div>
+                    <div className="hd-tile-label">{label}</div>
+                  </div>
+                </div>
+              ))}
             </div>
-            <div className="hd-card-subtitle">By employment type</div>
-            <div className="hd-chart-row">
-              <Donut
-                size={76}
-                thickness={10}
-                center={<div className="hd-donut-num">248</div>}
-                segments={[
-                  { value: 182, color: "#10b981" },
-                  { value: 34, color: "#f5c842" },
-                  { value: 18, color: "#f97316" },
-                  { value: 14, color: "#7c3aed" },
-                ]}
-              />
-              <ul className="hd-legend hd-legend-compact">
-                <li>
-                  <span className="hd-sq" style={{ background: "#10b981" }} />
-                  FT Regular
-                  <span className="hd-legend-n">182</span>
-                </li>
-                <li>
-                  <span className="hd-sq" style={{ background: "#f5c842" }} />
-                  PT Regular
-                  <span className="hd-legend-n">34</span>
-                </li>
-                <li>
-                  <span className="hd-sq" style={{ background: "#f97316" }} />
-                  FT Seasonal
-                  <span className="hd-legend-n">18</span>
-                </li>
-                <li>
-                  <span className="hd-sq" style={{ background: "#7c3aed" }} />
-                  PT Seasonal
-                  <span className="hd-legend-n">14</span>
-                </li>
-              </ul>
-            </div>
-          </div>
 
-          {/* Compliance & Filings strip — full width */}
-          <div className="hd-card hd-card-compliance">
-            <div className="hd-card-title">
-              <ShieldCheck size={11} strokeWidth={2} /> Compliance &amp; Filings
-            </div>
-            <div className="hd-compliance-grid">
-              <div className="hd-status">
-                <span className="hd-status-icon hd-status-ok">
-                  <HeartPulse size={10} strokeWidth={2.2} />
-                </span>
-                <div className="hd-status-body">
-                  <div className="hd-status-label">ACA</div>
-                  <div className="hd-status-detail">200 / 200 covered</div>
+            {/* Two-col: chart + recent pay runs */}
+            <div className="hd-twocol">
+              <div className="hd-card-flat hd-chart-card">
+                <div className="hd-chart-header">
+                  <div>
+                    <div className="hd-card-h">Payroll spend</div>
+                    <div className="hd-card-sub">Last 12 pay periods</div>
+                  </div>
+                  <div className="hd-chart-summary">
+                    <div className="hd-chart-summary-num">$10.1M</div>
+                    <div className="hd-chart-summary-delta">YTD</div>
+                  </div>
+                </div>
+                <AreaChart data={TREND_DATA} />
+                <div className="hd-chart-axis">
+                  {TREND_LABELS.map((l) => (
+                    <span key={l}>{l}</span>
+                  ))}
                 </div>
               </div>
-              <div className="hd-status">
-                <span className="hd-status-icon hd-status-warn">
-                  <HardHat size={10} strokeWidth={2.2} />
-                </span>
-                <div className="hd-status-body">
-                  <div className="hd-status-label">Certified Payroll</div>
-                  <div className="hd-status-detail">5 active jobs</div>
+
+              <div className="hd-card-flat hd-payruns-card">
+                <div className="hd-payruns-header">
+                  <div className="hd-card-h">Recent pay runs</div>
+                  <span className="hd-payruns-link">View all</span>
                 </div>
-              </div>
-              <div className="hd-status">
-                <span className="hd-status-icon hd-status-ok">
-                  <IdCard size={10} strokeWidth={2.2} />
-                </span>
-                <div className="hd-status-body">
-                  <div className="hd-status-label">I-9 / E-Verify</div>
-                  <div className="hd-status-detail">All current</div>
-                </div>
-              </div>
-              <div className="hd-status">
-                <span className="hd-status-icon hd-status-neutral">
-                  <Scale size={10} strokeWidth={2.2} />
-                </span>
-                <div className="hd-status-body">
-                  <div className="hd-status-label">Garnishments</div>
-                  <div className="hd-status-detail">4 active orders</div>
-                </div>
-              </div>
-              <div className="hd-status">
-                <span className="hd-status-icon hd-status-ok">
-                  <FileCheck2 size={10} strokeWidth={2.2} />
-                </span>
-                <div className="hd-status-body">
-                  <div className="hd-status-label">Workers Comp</div>
-                  <div className="hd-status-detail">Audit ready</div>
+                <div className="hd-payruns-table">
+                  {PAY_RUNS.map((r) => (
+                    <div
+                      className={`hd-payrun-row${r.offcycle ? " hd-payrun-offcycle" : ""}`}
+                      key={r.id}
+                    >
+                      <div className="hd-payrun-left">
+                        <div className="hd-payrun-id">{r.id}</div>
+                        <div className="hd-payrun-meta">{r.period}</div>
+                      </div>
+                      <div className="hd-payrun-right">
+                        <div className="hd-payrun-amount">{r.amount}</div>
+                        <div className="hd-payrun-status">
+                          <Check size={8} strokeWidth={3} />
+                          Posted
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      {/* ─── Floating callouts (trade-flavored) ─── */}
-
-      {/* Top-left: certified payroll for a prevailing-wage / Davis-Bacon job */}
-      <div className="hd-float hd-float-tl">
-        <div className="hd-float-icon hd-float-icon-warn">
-          <HardHat size={14} strokeWidth={2} />
-        </div>
-        <div className="hd-float-body">
-          <div className="hd-float-title">Certified Payroll Filed</div>
-          <div className="hd-float-text">
-            WH-347 submitted for Riverside Bridge electrical retrofit
-          </div>
-          <div className="hd-float-pill">
-            <span className="hd-pill-dot hd-pill-dot-yellow" />
-            5 prevailing-wage jobs active
-          </div>
-        </div>
-      </div>
-
-      {/* Top-right: blended OT across multi-rate field crews */}
-      <div className="hd-float hd-float-tr">
-        <div className="hd-float-icon hd-float-icon-money">
-          <Clock4 size={14} strokeWidth={2.2} />
-        </div>
-        <div className="hd-float-body">
-          <div className="hd-float-title">Blended OT Resolved</div>
-          <div className="hd-float-text">
-            Multi-rate overtime calculated across HVAC + service crews
-          </div>
-          <div className="hd-float-pill">
-            <span className="hd-pill-dot hd-pill-dot-green" />
-            $12,840 reconciled · 14 techs
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom-right: pay run complete with mobile field delivery */}
-      <div className="hd-float hd-float-br">
-        <div className="hd-float-icon hd-float-icon-check">
-          <Check size={16} strokeWidth={3} />
-        </div>
-        <div className="hd-float-body">
-          <div className="hd-float-title">Payroll Complete</div>
-          <div className="hd-float-text">
-            248 / 248 paid across 4 pay schedules
-          </div>
-          <div className="hd-float-pill">
-            <span className="hd-pill-dot hd-pill-dot-green" />
-            Mobile pay stubs delivered to field
+            {/* Compliance & Filings strip */}
+            <div className="hd-card-flat hd-compliance-card">
+              <div className="hd-card-h">
+                <ShieldCheck size={11} strokeWidth={2} /> Compliance &amp; Filings
+              </div>
+              <div className="hd-compliance-grid">
+                {COMPLIANCE.map(({ Icon, label, detail, tone }) => (
+                  <div className="hd-status" key={label}>
+                    <span className={`hd-status-icon hd-status-${tone}`}>
+                      <Icon size={10} strokeWidth={2.2} />
+                    </span>
+                    <div className="hd-status-body">
+                      <div className="hd-status-label">{label}</div>
+                      <div className="hd-status-detail">{detail}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
