@@ -119,12 +119,12 @@ export function HeroDashboard() {
     <div
       className="hero-dashboard"
       role="img"
-      aria-label="Flux dashboard built on Greenshades — a payroll and HR cockpit for specialty contractors showing the current pay run total, active employees, multi-state tax filings, prevailing-wage projects, a payroll spend trend, recent pay runs including an off-cycle run, and a compliance strip covering ACA, certified payroll, I-9, garnishments, and workers comp."
+      aria-label="TradePay dashboard built on Greenshades — a payroll and HR cockpit for specialty contractors showing the current pay run total, active employees, multi-state tax filings, prevailing-wage projects, a payroll spend trend, recent pay runs including an off-cycle run, and a compliance strip covering ACA, certified payroll, I-9, garnishments, and workers comp."
     >
       <div className="hd-window">
         {/* ─── Sidebar ─── */}
         <aside className="hd-sidebar">
-          <div className="hd-sidebar-logo">G</div>
+          <div className="hd-sidebar-logo">T</div>
           <div className="hd-sidebar-divider" />
           <nav className="hd-sidebar-nav">
             {SIDEBAR.map(({ Icon, label, active }) => (

@@ -60,7 +60,7 @@ export function Capabilities() {
       <div className="section-inner">
         <div className="section-label">Platform</div>
         <h2 className="section-title">
-          What Flux handles for your trade business
+          What TradePay handles for your trade business
         </h2>
         <p className="section-sub">
           Everything a specialty contractor needs to run payroll, taxes,

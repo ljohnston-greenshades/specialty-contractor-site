@@ -52,7 +52,7 @@ export function CrewsInAction() {
             </h2>
           </div>
           <p className="crews-header-sub">
-            These are the people on Flux payroll — and the working
+            These are the people on TradePay payroll — and the working
             conditions the platform was designed around.
           </p>
         </div>

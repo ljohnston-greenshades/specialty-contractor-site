@@ -17,7 +17,7 @@ const barlowCondensed = Barlow_Condensed({
 });
 
 export const metadata: Metadata = {
-  title: "Payroll & HR for Specialty Contractors | Flux",
+  title: "Payroll & HR for Specialty Contractors | TradePay",
   description:
     "Multi-rate pay, multi-state taxes, mobile-first ESS — payroll built for plumbers, HVAC, electricians, and landscapers. Powered by Greenshades.",
 };

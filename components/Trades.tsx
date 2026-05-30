@@ -41,7 +41,7 @@ export function Trades() {
           </div>
           <p className="trades-header-sub">
             From a 15-person plumbing shop to a multi-state HVAC operation,
-            Flux scales with the way you actually staff.
+            TradePay scales with the way you actually staff.
           </p>
         </div>
         <div className="trades-grid">

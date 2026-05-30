@@ -26,7 +26,7 @@ All photos should:
 ## Crews in Action band — `components/CrewsInAction.tsx`
 
 These four images run as a 4-column band between the trades and
-why-Flux sections. Vertical 4:5 framing reads best.
+why-TradePay sections. Vertical 4:5 framing reads best.
 
 | Path | Subject |
 |------|---------|
@@ -42,7 +42,7 @@ treat each entry as the brief when sourcing.
 
 | Path | Subject |
 |------|---------|
-| `testimonials/featured-customer-portrait.jpg` | Portrait of the featured Flux customer — a specialty contractor business owner or operations leader in branded company uniform, ideally at one of their job sites or in their shop, confident direct eye contact. ~200×240 px framing. |
+| `testimonials/featured-customer-portrait.jpg` | Portrait of the featured TradePay customer — a specialty contractor business owner or operations leader in branded company uniform, ideally at one of their job sites or in their shop, confident direct eye contact. ~200×240 px framing. |
 
 Replace the placeholder testimonial copy in `components/Testimonial.tsx`
 at the same time you swap in the portrait.

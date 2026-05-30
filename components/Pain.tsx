@@ -20,19 +20,19 @@ const PAIN_POINTS: PainPoint[] = [
     num: "01",
     Icon: Map,
     title: "Workers crossing state lines",
-    body: "A technician might work in three states in one week. Flux assigns the right tax jurisdiction per employee, per pay period — automatically.",
+    body: "A technician might work in three states in one week. TradePay assigns the right tax jurisdiction per employee, per pay period — automatically.",
   },
   {
     num: "02",
     Icon: Calculator,
     title: "Multiple pay rates, one run",
-    body: "Blended overtime, per-trade scales, prevailing wage tiers. In the trades, that's just Tuesday. Flux handles all of it in a single pay run.",
+    body: "Blended overtime, per-trade scales, prevailing wage tiers. In the trades, that's just Tuesday. TradePay handles all of it in a single pay run.",
   },
   {
     num: "03",
     Icon: ClipboardCheck,
     title: "Compliance that keeps changing",
-    body: "FLSA, ACA, garnishments, state wage bases — the rules shift constantly. Flux keeps you current so you're not staffing a compliance team to do it.",
+    body: "FLSA, ACA, garnishments, state wage bases — the rules shift constantly. TradePay keeps you current so you're not staffing a compliance team to do it.",
   },
   {
     num: "04",
@@ -44,13 +44,13 @@ const PAIN_POINTS: PainPoint[] = [
     num: "05",
     Icon: Repeat,
     title: "Seasonal swings and off-cycle pay",
-    body: "Peak season means rapid onboarding and emergency pay runs. Flux supports unlimited runs — no per-run fees, no apologies.",
+    body: "Peak season means rapid onboarding and emergency pay runs. TradePay supports unlimited runs — no per-run fees, no apologies.",
   },
   {
     num: "06",
     Icon: Link2,
     title: "Payroll siloed from your ERP",
-    body: "When payroll doesn't talk to your ERP, you're exporting CSVs and reconciling by hand. Flux connects natively to Microsoft Dynamics — both directions, no scripts.",
+    body: "When payroll doesn't talk to your ERP, you're exporting CSVs and reconciling by hand. TradePay connects natively to Microsoft Dynamics — both directions, no scripts.",
   },
 ];
 

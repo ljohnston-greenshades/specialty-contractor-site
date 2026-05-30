@@ -7,7 +7,7 @@ const POINTS = [
   },
   {
     strong: "Employee & project data sync",
-    rest: " — Flux pulls from your Dynamics instance; changes stay in sync automatically",
+    rest: " — TradePay pulls from your Dynamics instance; changes stay in sync automatically",
   },
   {
     strong: "GP → BC migration path",
@@ -31,7 +31,7 @@ export function Dynamics() {
             </h2>
             <p className="dynamics-intro">
               If you're moving off Dynamics GP or already on Business
-              Central, Flux is built for it. Two-way integration, no
+              Central, TradePay is built for it. Two-way integration, no
               data re-entry, and 20+ years of working hands-on with the
               Microsoft Dynamics stack.
             </p>
@@ -67,7 +67,7 @@ export function Dynamics() {
             </div>
             <div className="erp-box highlighted">
               <div className="erp-box-label">Payroll & HR Platform</div>
-              <div className="erp-box-name">Flux</div>
+              <div className="erp-box-name">TradePay</div>
               <div className="erp-modules-row">
                 <div className="erp-module">Payroll</div>
                 <div className="erp-module">Tax & Compliance</div>

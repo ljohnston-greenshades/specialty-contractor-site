@@ -14,7 +14,7 @@ export function Testimonial() {
             <img
               className="testimonial-portrait"
               src="/images/testimonials/featured-customer-portrait.jpg"
-              alt="Portrait of the featured Flux customer — a specialty contractor business owner or operations leader photographed in branded company uniform, ideally at one of their job sites or in their shop, with confident, direct eye contact."
+              alt="Portrait of the featured TradePay customer — a specialty contractor business owner or operations leader photographed in branded company uniform, ideally at one of their job sites or in their shop, with confident, direct eye contact."
               width={200}
               height={240}
             />

@@ -19,7 +19,7 @@ export function Hero() {
           </h1>
           <p className="hero-sub">
             Multi-rate pay, multi-state taxes, workers across a dozen job
-            sites — most platforms weren&apos;t built for this. Flux was.
+            sites — most platforms weren&apos;t built for this. TradePay was.
             Hundreds of plumbing, HVAC, electrical, and landscaping
             companies run on it.
           </p>

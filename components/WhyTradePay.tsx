@@ -2,7 +2,7 @@ const DIFFERENTIATORS = [
   {
     n: "01",
     title: "Multi-state tax is native, not bolted on",
-    body: "Flux assigns the right tax jurisdiction per work location automatically. No manual overrides. No year-end scrambles.",
+    body: "TradePay assigns the right tax jurisdiction per work location automatically. No manual overrides. No year-end scrambles.",
   },
   {
     n: "02",
@@ -12,7 +12,7 @@ const DIFFERENTIATORS = [
   {
     n: "03",
     title: "Real support when it counts",
-    body: "Payroll day is tomorrow and something's wrong. With Flux you get a real person on the phone — no ticket queue, no offshore triage.",
+    body: "Payroll day is tomorrow and something's wrong. With TradePay you get a real person on the phone — no ticket queue, no offshore triage.",
   },
   {
     n: "04",
@@ -21,15 +21,15 @@ const DIFFERENTIATORS = [
   },
 ];
 
-export function WhyFlux() {
+export function WhyTradePay() {
   return (
     <section className="section why-section">
       <div className="section-inner">
         <div className="why-layout">
           <div className="why-left">
-            <div className="section-label">Why Flux</div>
+            <div className="section-label">Why TradePay</div>
             <h2 className="section-title">
-              What sets Flux apart
+              What sets TradePay apart
             </h2>
             <p className="why-left-sub">
               When you compare options, these are the things contractors

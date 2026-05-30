@@ -5,7 +5,7 @@ import { Pain } from "@/components/Pain";
 import { Capabilities } from "@/components/Capabilities";
 import { Trades } from "@/components/Trades";
 import { CrewsInAction } from "@/components/CrewsInAction";
-import { WhyFlux } from "@/components/WhyFlux";
+import { WhyTradePay } from "@/components/WhyTradePay";
 import { Testimonial } from "@/components/Testimonial";
 import { Dynamics } from "@/components/Dynamics";
 import { CTA } from "@/components/CTA";
@@ -21,7 +21,7 @@ export default function Home() {
       <Capabilities />
       <Trades />
       <CrewsInAction />
-      <WhyFlux />
+      <WhyTradePay />
       <Testimonial />
       <Dynamics />
       <CTA />

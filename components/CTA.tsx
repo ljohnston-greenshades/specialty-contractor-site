@@ -6,7 +6,7 @@ export function CTA() {
       <div className="cta-inner">
         <div>
           <div className="section-label">Get Started</div>
-          <h2 className="section-title">See Flux built for your trade</h2>
+          <h2 className="section-title">See TradePay built for your trade</h2>
           <p className="cta-body">
             See a live demo built around the complexity your crews
             actually deal with — multi-state taxes, blended overtime,
